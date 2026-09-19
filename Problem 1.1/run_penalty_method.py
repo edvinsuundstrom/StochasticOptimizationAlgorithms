@@ -1,4 +1,5 @@
 import math
+
 import matplotlib.pyplot as plt
 
 # ==============================
@@ -11,11 +12,11 @@ def compute_gradient(x, mu):
     g = x1**2 + x2**2 - 1
 
     if g <= 0:
-      grad_1 = 2 * (x1 - 1)
-      grad_2 = 4 * (x2 - 2)
+        grad_1 = 2 * (x1 - 1)
+        grad_2 = 4 * (x2 - 2)
     else:
-      grad_1 = 2 * (x1 - 1) + 4 * mu * x1 * g
-      grad_2 = 4 * (x2 - 2) + 4 * mu * x2 * g
+        grad_1 = 2 * (x1 - 1) + 4 * mu * x1 * g
+        grad_2 = 4 * (x2 - 2) + 4 * mu * x2 * g
 
     return [grad_1, grad_2]
 
@@ -29,14 +30,14 @@ def run_gradient_descent(x_start, mu, eta, gradient_tolerance):
     x = list(x_start)
 
     while True:
-      grad = compute_gradient(x, mu)
-      grad_norm = math.sqrt(grad[0] ** 2 + grad[1] ** 2)
+        grad = compute_gradient(x, mu)
+        grad_norm = math.sqrt(grad[0] ** 2 + grad[1] ** 2)
 
-      if grad_norm < gradient_tolerance:
-        return x
+        if grad_norm < gradient_tolerance:
+            return x
 
-      x[0] -= eta * grad[0]
-      x[1] -= eta * grad[1]
+        x[0] -= eta * grad[0]
+        x[1] -= eta * grad[1]
 
 
 # ==============================
